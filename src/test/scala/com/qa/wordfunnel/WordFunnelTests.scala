@@ -22,21 +22,18 @@ class WordFunnelTests extends UnitSpec {
 
   }
 
-  "getFilterWordList" should "return a string" in {
-    assert(funnalia.getFilteredWordList("a").isInstanceOf[Iterator[String]])
-  }
+//  "getFilterWordList" should "return a string" in {
+//    assert(funnalia.getFilteredWordList("a").isInstanceOf[Iterator[String]])
+//  }
+//
+//  "getNextWord" should "return a list of strings" in {
+//    assert(funnalia.getNextWords(funnalia.getFilteredWordList(funnalia.getRegexFromWord("gnash")), 1).isInstanceOf[Iterator[String]])
+//  }
+//
+//  "getOnlyWordsOfLength" should "return an iterator of strings" in {
+//    assert(funnalia.getOnlyWordsOfLength(funnalia.getFilteredWordList(funnalia.getRegexFromWord("gnash")), 1).isInstanceOf[Iterator[String]])
+//  }
 
-  "getNextWord" should "return a list of strings" in {
-    assert(funnalia.getNextWords(funnalia.getFilteredWordList(funnalia.getRegexFromWord("gnash")), 1).isInstanceOf[Iterator[String]])
-  }
-
-  "getOnlyWordsOfLength" should "return an iterator of strings" in {
-    assert(funnalia.getOnlyWordsOfLength(funnalia.getFilteredWordList(funnalia.getRegexFromWord("gnash")), 1).isInstanceOf[Iterator[String]])
-  }
-
-  "depthGetter" should "return the depth of a given iteration" in {
-    assert(funnalia.depthGetter(3,2).isInstanceOf[Int])
-  }
 
 //  "wordFinder" should "return the biggest depth" in {
 //    assert(funnalia.wordFinder(5, "gnash", 1).isInstanceOf[Int])
