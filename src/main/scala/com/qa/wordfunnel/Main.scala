@@ -4,5 +4,6 @@ object Main extends App {
   val wf = new WordFunnel
   wf.getFilteredWordList(wf.getRegexFromWord("gnash")).foreach(println)
   println("-------------------------")
-  println(wf.wordFinder(5,"gnash",1,wf.getFilteredWordList(wf.getRegexFromWord("gnash"))))
+  wf.wordFinder(0, 5,"gnash",1,wf.getFilteredWordList(wf.getRegexFromWord("gnash")))
+  println(wf.getMaxStep())
 }

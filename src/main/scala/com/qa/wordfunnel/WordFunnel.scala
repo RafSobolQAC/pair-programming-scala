@@ -1,5 +1,7 @@
 package com.qa.wordfunnel
 
+import scala.collection.mutable.ListBuffer
+import scala.concurrent.Future
 import scala.io.Source
 
 class WordFunnel {
@@ -35,28 +37,36 @@ class WordFunnel {
   def depthGetter(initLength: Int, length: Int): Int = {
     initLength - length + 1
   }
+  val steps = new ListBuffer[Int]
 
-  def wordFinder(initLength: Int, word: String, step: Int, listWords: List[String]): Int = {
+  def wordFinder(previousMax: Int, initLength: Int, word: String, step: Int, listWords: List[String]): Int = {
+    var nowMax = 0
+    if (step > nowMax) nowMax = step
     if (step == initLength || word == "") {
     } else {
       if (getOnlyWordsOfLength(listWords, initLength - step).nonEmpty) {
         getNextWords(listWords, initLength - step)
-          .map(smallWord => {
+          .foreach(smallWord => {
             wordFinder(
-              initLength, smallWord, step + 1,
+              nowMax, initLength, smallWord, step + 1,
               getNextWords(
                 getFilteredWordList(
                   getRegexFromWord(smallWord)
                 ), initLength - step
               )
             )
+
           }
           )
 
       }
     }
-    println(step)
+
+    steps += step
     step
   }
 
+  def getMaxStep() = {
+    steps.reduce((a,b) => if (a>b) a else b)
+  }
 }
